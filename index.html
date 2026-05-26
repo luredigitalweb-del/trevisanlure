@@ -643,6 +643,78 @@ section{padding:100px 0;position:relative}
 .stellantis-card li strong{color:var(--black);font-weight:700;display:block;margin-bottom:2px}
 .stellantis-card li small{color:var(--gray);font-size:13.5px;display:block;line-height:1.45}
 
+/* MARCAS PREMIUM — MARQUEE */
+.premium-brands{
+  margin-top:50px;padding-top:36px;
+  border-top:1px solid rgba(0,0,0,.08);
+  position:relative;
+}
+.premium-brands-label{
+  text-align:center;color:var(--black);
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:14px;letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:24px;
+  display:inline-flex;align-items:center;gap:14px;
+  width:100%;justify-content:center;
+}
+.premium-brands-label::before,
+.premium-brands-label::after{
+  content:'';flex:0 0 40px;height:2px;background:var(--black);
+}
+.premium-brands h3{
+  text-align:center;
+  font-size:clamp(22px,2.4vw,30px);
+  margin-bottom:32px;
+  color:var(--black);
+  text-transform:none;
+  letter-spacing:-.3px;
+}
+.premium-brands h3 strong{color:var(--black);position:relative;display:inline-block}
+.premium-brands h3 strong::after{
+  content:'';position:absolute;left:0;right:0;bottom:-4px;height:3px;background:var(--black);border-radius:2px;
+}
+.marquee{
+  overflow:hidden;
+  position:relative;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+}
+.marquee-track{
+  display:flex;gap:36px;
+  width:max-content;
+  animation:marquee 30s linear infinite;
+}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-item{
+  flex:0 0 auto;
+  width:160px;height:90px;
+  background:var(--white);
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  padding:14px 22px;
+  transition:all .25s;
+  box-shadow:0 4px 16px rgba(0,0,0,.06);
+}
+.marquee-item:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.12);border-color:var(--black)}
+.marquee-item img,
+.marquee-item > svg{max-width:100%;max-height:60px;width:auto;height:auto;object-fit:contain;display:block}
+.marquee-item > svg{height:60px}
+.marquee-item .brand-name{
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  font-size:22px;letter-spacing:2px;color:var(--black);
+  text-transform:uppercase;
+}
+@keyframes marquee{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(calc(-50% - 18px))}
+}
+@media (max-width:560px){
+  .marquee-item{width:130px;height:74px;padding:10px 16px}
+  .marquee-item img{max-height:36px}
+  .marquee-item .brand-name{font-size:18px}
+}
+
 /* DIFERENCIAIS */
 .dif{background:var(--white)}
 .dif-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
@@ -734,6 +806,16 @@ section{padding:100px 0;position:relative}
 }
 .social-cta:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(225,48,108,.5)}
 .social-cta svg{width:22px;height:22px;fill:currentColor}
+.social-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.social-cta-alt{
+  background:var(--black);
+  color:var(--yellow);
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+.social-cta-alt:hover{
+  background:#000;color:var(--yellow);
+  box-shadow:0 16px 40px rgba(0,0,0,.4);
+}
 .social-handle{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid rgba(0,0,0,.1);padding:8px 16px;border-radius:30px;color:var(--black);font-size:14px;font-weight:600;margin-bottom:24px;box-shadow:var(--shadow-sm)}
 .social-handle svg{width:16px;height:16px;stroke:var(--black)}
 
@@ -1214,6 +1296,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </ul>
       </div>
     </div>
+
+    <div class="premium-brands fade-up">
+      <div class="premium-brands-label">Marcas Premium</div>
+      <h3>Atendemos todas as <strong>marcas premium do mercado</strong></h3>
+      <div class="marquee">
+        <div class="marquee-track" id="premiumMarquee">
+          <div class="marquee-item"><img src="bmw.png" alt="BMW"></div>
+          <div class="marquee-item"><img src="mercedes.png" alt="Mercedes-Benz"></div>
+          <div class="marquee-item"><img src="audi.png" alt="Audi"></div>
+          <div class="marquee-item"><img src="porsche.png" alt="Porsche"></div>
+          <div class="marquee-item"><img src="landrover.png" alt="Land Rover"></div>
+          <div class="marquee-item"><img src="volvo.png" alt="Volvo"></div>
+          <!-- Duplicado para loop infinito -->
+          <div class="marquee-item"><img src="bmw.png" alt="BMW"></div>
+          <div class="marquee-item"><img src="mercedes.png" alt="Mercedes-Benz"></div>
+          <div class="marquee-item"><img src="audi.png" alt="Audi"></div>
+          <div class="marquee-item"><img src="porsche.png" alt="Porsche"></div>
+          <div class="marquee-item"><img src="landrover.png" alt="Land Rover"></div>
+          <div class="marquee-item"><img src="volvo.png" alt="Volvo"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1329,10 +1433,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="l">Anos no ramo</div>
           </div>
         </div>
-        <a href="https://instagram.com/trevisan_officina" target="_blank" rel="noopener" class="social-cta">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          Seguir no Instagram
-        </a>
+        <div class="social-ctas">
+          <a href="https://instagram.com/trevisan_officina" target="_blank" rel="noopener" class="social-cta">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            @trevisan_officina
+          </a>
+          <a href="https://instagram.com/alessandrortrevisan" target="_blank" rel="noopener" class="social-cta social-cta-alt">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            @alessandrortrevisan
+          </a>
+        </div>
       </div>
       <div class="phone-wrap fade-up">
         <svg class="phone" viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
